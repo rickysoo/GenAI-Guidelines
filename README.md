@@ -2,56 +2,19 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# GenAI University Onboarding
+# Run and deploy your AI Studio app
 
-An interactive learning platform to help users understand GenAI guidelines through lessons and quizzes.
+This contains everything you need to run your app locally.
 
-## Features
-
-- 📚 Interactive learning guidelines
-- 🎯 Multi-level quiz system
-- 📊 Results tracking and review
-- 🌙 Dark mode support
-- 📱 Responsive design
+View your app in AI Studio: https://ai.studio/apps/drive/1Z-hC1ppRMLG8LPSfxD2SIxa8_sp3oFb9
 
 ## Run Locally
 
-**Prerequisites:** Node.js 18+
+**Prerequisites:**  Node.js
+
 
 1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Build for Production
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
-
-## Deploy to GitHub Pages
-
-This project is configured to automatically deploy to GitHub Pages when you push to the `main` branch.
-
-### Setup Instructions:
-
-1. Go to your repository **Settings** → **Pages**
-2. Under "Build and deployment", select **Source**: "GitHub Actions"
-3. Push your code to the `main` branch
-4. The site will be automatically deployed to `https://<username>.github.io/GenAI-Guidelines/`
-
-## Technology Stack
-
-- React 19
-- TypeScript
-- Vite
-- TailwindCSS
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

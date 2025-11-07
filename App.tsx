@@ -7,6 +7,7 @@ import Results from './components/Results';
 import Header from './components/Header';
 import LevelSelector from './components/LevelSelector';
 import Notices from './components/Notices';
+import Footer from './components/Footer'; // Import the new Footer component
 // Import the pre-generated questions from the new TypeScript module
 import questionBank from './questionBank';
 
@@ -83,18 +84,19 @@ const App: React.FC = () => {
                 <p>{dataError}</p>
               </div>
             )}
-            <Home onStartLearning={handleStartLearning} onStartQuiz={handleStartQuiz} onShowNotices={handleShowNotices} />
+            <Home onStartLearning={handleStartLearning} onStartQuiz={handleStartQuiz} />
           </>
         );
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans flex flex-col">
       <Header onGoHome={handleGoHome} />
       <main className="container mx-auto p-4 sm:p-6">
         {renderView()}
       </main>
+      <Footer onShowNotices={handleShowNotices} />
     </div>
   );
 };
