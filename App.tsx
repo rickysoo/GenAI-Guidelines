@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import type { QuizQuestion } from './types';
 import Home from './components/Home';
@@ -79,9 +80,9 @@ const App: React.FC = () => {
          return (
           <>
             {dataError && (
-              <div className="bg-red-100 dark:bg-red-900/50 border-l-4 border-red-500 text-red-700 dark:text-red-200 p-4 rounded-lg shadow-md mb-6" role="alert">
-                <p className="font-bold">System Error</p>
-                <p>{dataError}</p>
+              <div className="bg-gold-light/50 dark:bg-gold-dark/20 border-l-4 border-gold-dark text-navy dark:text-gold-light p-4 rounded-lg shadow-md mb-6" role="alert">
+                <p className="font-bold font-serif">System Error</p>
+                <p className="font-sans">{dataError}</p>
               </div>
             )}
             <Home onStartLearning={handleStartLearning} onStartQuiz={handleStartQuiz} />
@@ -91,9 +92,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-light dark:bg-navy">
       <Header onGoHome={handleGoHome} />
-      <main className="container mx-auto p-4 sm:p-6">
+      <main className="container mx-auto p-4 sm:p-6 w-full flex-grow flex flex-col justify-center">
         {renderView()}
       </main>
       <Footer onShowNotices={handleShowNotices} />

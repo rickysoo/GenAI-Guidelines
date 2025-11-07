@@ -1,5 +1,5 @@
 {
-  "name": "GenAI University Onboarding",
-  "description": "An interactive learning and testing application for university students, faculty, and staff to understand and adhere to the official guidelines on using Generative AI.",
+  "name": "University GenAI Onboarding",
+  "description": "An interactive learning and testing application for professionals to understand and adhere to corporate guidelines on using Generative AI.",
   "requestFramePermissions": []
 }

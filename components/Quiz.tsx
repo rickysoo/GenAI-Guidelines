@@ -33,9 +33,9 @@ const Quiz: React.FC<QuizProps> = ({ questions, onQuizComplete }) => {
   
   if (!questions || questions.length === 0) {
     return (
-        <div className="bg-yellow-100 dark:bg-yellow-900 border-l-4 border-yellow-500 text-yellow-700 dark:text-yellow-200 p-6 rounded-lg shadow-md" role="alert">
-            <p className="font-bold">Quiz Error</p>
-            <p>No questions were provided for this quiz.</p>
+        <div className="bg-gold-light/50 dark:bg-gold-dark/20 border-l-4 border-gold-dark text-navy dark:text-gold-light p-6 rounded-lg shadow-md" role="alert">
+            <p className="font-bold font-serif">Quiz Error</p>
+            <p className="font-sans">No questions were provided for this quiz.</p>
         </div>
     );
   }
@@ -44,13 +44,13 @@ const Quiz: React.FC<QuizProps> = ({ questions, onQuizComplete }) => {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg animate-fade-in">
+    <div className="bg-white dark:bg-navy-light p-6 sm:p-8 rounded-xl card-shadow animate-fade-in">
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
-            <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400">Question {currentQuestionIndex + 1} of {questions.length}</h3>
+            <h3 className="text-sm font-semibold text-gold dark:text-gold-light uppercase tracking-wider">Question {currentQuestionIndex + 1} of {questions.length}</h3>
         </div>
-        <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
-          <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+        <div className="w-full bg-gray-light/80 dark:bg-navy rounded-full h-2.5">
+          <div className="bg-gold h-2.5 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ const Quiz: React.FC<QuizProps> = ({ questions, onQuizComplete }) => {
         <button
           onClick={handleNext}
           disabled={selectedAnswer === null}
-          className="bg-blue-600 text-white font-bold py-2 px-8 rounded-lg hover:bg-blue-700 disabled:bg-slate-400 disabled:cursor-not-allowed dark:disabled:bg-slate-600 transition-colors focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
+          className="bg-gold text-navy font-semibold py-2 px-8 rounded-md hover:bg-gold-dark disabled:bg-gray disabled:text-gray-light disabled:cursor-not-allowed dark:disabled:bg-navy-light transition-colors"
         >
           {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
         </button>

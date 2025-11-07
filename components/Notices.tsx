@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { NOTICES_CARDS } from '../notices';
 
@@ -12,11 +13,11 @@ const SimpleMarkdownParser: React.FC<{ text: string }> = ({ text }) => {
         if (line.trim() === '') return null;
         const parts = line.split(/(\*\*.*?\*\*)/g);
         return (
-          <p key={lineIndex} className="mb-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+          <p key={lineIndex} className="mb-4 text-brand-text leading-relaxed">
             {parts.map((part, partIndex) => {
               if (part.startsWith('**') && part.endsWith('**')) {
                 return (
-                  <strong key={partIndex} className="font-bold text-slate-800 dark:text-slate-100">
+                  <strong key={partIndex} className="font-bold text-navy dark:text-white">
                     {part.slice(2, -2)}
                   </strong>
                 );
@@ -52,26 +53,26 @@ const Notices: React.FC<NoticesProps> = ({ onGoHome }) => {
   const progress = ((currentIndex + 1) / NOTICES_CARDS.length) * 100;
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg flex flex-col min-h-[500px]">
+    <div className="bg-white dark:bg-navy-light p-6 sm:p-8 rounded-xl card-shadow flex flex-col min-h-[500px]">
       <div className="mb-6">
          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-sm font-semibold text-blue-600 dark:text-blue-400">Notice {currentIndex + 1} of {NOTICES_CARDS.length}</h3>
+            <h3 className="text-sm font-semibold text-gold dark:text-gold-light uppercase tracking-wider">Notice {currentIndex + 1} of {NOTICES_CARDS.length}</h3>
         </div>
-        <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
-          <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div>
+        <div className="w-full bg-gray-light/80 dark:bg-navy rounded-full h-2.5">
+          <div className="bg-gold h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
       
       <div className="flex-grow flex flex-col justify-center animate-fade-in" key={currentIndex}>
         <div className="text-center">
             {currentCard.type === 'title' && (
-                <h2 className="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-4">{currentCard.title}</h2>
+                <h2 className="text-4xl font-extrabold text-gold dark:text-gold-light mb-4">{currentCard.title}</h2>
             )}
             {currentCard.type === 'section_title' && (
-                <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b-2 border-slate-300 dark:border-slate-600 pb-2">{currentCard.title}</h2>
+                <h2 className="text-3xl font-bold text-navy dark:text-white mb-4 border-b-2 border-gray-light dark:border-navy pb-2">{currentCard.title}</h2>
             )}
             {currentCard.type === 'content' && (
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-6">{currentCard.title}</h3>
+                <h3 className="text-2xl font-semibold text-navy dark:text-white mb-6">{currentCard.title}</h3>
             )}
             <div className="text-lg max-w-3xl mx-auto">
                 <SimpleMarkdownParser text={currentCard.content} />
@@ -83,19 +84,15 @@ const Notices: React.FC<NoticesProps> = ({ onGoHome }) => {
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="bg-slate-200 text-slate-800 font-bold py-2 px-6 rounded-lg hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 transition-colors"
+          className="bg-transparent border-2 border-navy text-navy font-semibold py-2 px-6 rounded-md transition-colors hover:bg-navy hover:text-white dark:border-gold-light dark:text-gold-light dark:hover:bg-gold-light dark:hover:text-navy disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Previous
         </button>
         <button
           onClick={handleNext}
-          className={`${
-            isLastCard
-              ? 'bg-green-600 hover:bg-green-700 focus:ring-green-300 dark:focus:ring-green-800'
-              : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-300 dark:focus:ring-blue-800'
-          } text-white font-bold py-2 px-6 rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-4`}
+           className="bg-gold text-navy font-semibold py-2 px-6 rounded-md transition-all transform hover:scale-105 hover:bg-gold-dark"
         >
-          {isLastCard ? "Home" : 'Next'}
+          {isLastCard ? "Go to Home" : 'Next'}
         </button>
       </div>
     </div>

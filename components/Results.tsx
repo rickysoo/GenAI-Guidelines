@@ -25,35 +25,35 @@ const Results: React.FC<ResultsProps> = ({ userAnswers, questions, onRetakeQuiz,
   const incorrectAnswers = questions.map((q, i) => ({...q, userAnswer: userAnswers[i]})).filter((q,i) => q.userAnswer !== q.correctAnswerIndex);
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg animate-fade-in">
-      <div className="text-center border-b border-slate-200 dark:border-slate-700 pb-6 mb-6">
-        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-2">Quiz Results</h2>
-        <p className="text-lg text-slate-600 dark:text-slate-300">{getScoreMessage(scorePercentage)}</p>
+    <div className="bg-white dark:bg-navy-light p-6 sm:p-8 rounded-xl card-shadow animate-fade-in">
+      <div className="text-center border-b border-gray-light dark:border-navy pb-6 mb-6">
+        <h2 className="text-3xl font-bold text-navy dark:text-white mb-2">Quiz Results</h2>
+        <p className="text-lg text-gray dark:text-gray">{getScoreMessage(scorePercentage)}</p>
         <div className="my-6">
-          <p className="text-5xl font-extrabold text-blue-600 dark:text-blue-400">
+          <p className="text-5xl font-extrabold text-gold dark:text-gold-light">
             {correctAnswersCount} / {questions.length}
           </p>
-          <p className="text-lg font-semibold text-slate-700 dark:text-slate-200">({scorePercentage.toFixed(0)}%)</p>
+          <p className="text-lg font-semibold text-gray dark:text-gray">({scorePercentage.toFixed(0)}%)</p>
         </div>
       </div>
       
       {incorrectAnswers.length > 0 && (
         <div className="mb-8">
-            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4">Review Your Answers</h3>
+            <h3 className="text-xl font-semibold text-navy dark:text-white mb-4">Review Your Answers</h3>
             <div className="space-y-6">
                 {incorrectAnswers.map((question, index) => (
-                    <div key={index} className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg">
-                        <p className="font-semibold mb-3">{question.questionText}</p>
+                    <div key={index} className="bg-gray-light dark:bg-navy p-4 rounded-lg">
+                        <p className="font-semibold mb-3 text-brand-text">{question.questionText}</p>
                         <div className="space-y-2">
-                           <div className="flex items-start p-2 rounded bg-red-100/50 dark:bg-red-900/30 text-red-800 dark:text-red-200">
+                           <div className="flex items-start p-2 rounded bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200">
                                 <XIcon className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
                                 <div><span className="font-bold">Your answer:</span> {question.options[question.userAnswer]}</div>
                            </div>
-                           <div className="flex items-start p-2 rounded bg-green-100/50 dark:bg-green-900/30 text-green-800 dark:text-green-200">
+                           <div className="flex items-start p-2 rounded bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200">
                                 <CheckIcon className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
                                 <div><span className="font-bold">Correct answer:</span> {question.options[question.correctAnswerIndex]}</div>
                            </div>
-                           <p className="text-sm text-slate-600 dark:text-slate-400 pt-2 italic"><strong>Explanation:</strong> {question.explanation}</p>
+                           <p className="text-sm text-gray dark:text-gray-light pt-2 italic"><strong>Explanation:</strong> {question.explanation}</p>
                         </div>
                     </div>
                 ))}
@@ -64,13 +64,13 @@ const Results: React.FC<ResultsProps> = ({ userAnswers, questions, onRetakeQuiz,
       <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
         <button
           onClick={onRetakeQuiz}
-          className="w-full sm:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800"
+          className="w-full sm:w-auto bg-gold text-navy font-semibold py-3 px-8 rounded-md transition-all transform hover:-translate-y-0.5 btn-shadow-gold-hover focus:outline-none"
         >
           Retake Quiz
         </button>
         <button
           onClick={onReviewGuidelines}
-          className="w-full sm:w-auto bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-lg hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:focus:ring-slate-600"
+          className="w-full sm:w-auto bg-transparent border-2 border-navy text-navy font-semibold py-3 px-8 rounded-md transition-all transform hover:-translate-y-0.5 hover:bg-navy hover:text-white dark:border-gold-light dark:text-gold-light dark:hover:bg-gold-light dark:hover:text-navy focus:outline-none"
         >
           Review Guidelines
         </button>
